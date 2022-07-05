@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "695569907291",
+    "project_id": "myworkout-6cb41",
+    "storage_bucket": "myworkout-6cb41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695569907291:android:692ddb0ed5a0a6f818097e",
+        "android_client_info": {
+          "package_name": "com.dmtech.my_workout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695569907291-u88lctlgjt9ofqoc8lqv9vbbbjvg5st5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcZAsjIjooZP9wAr4wTQlnTAjnVKQQoiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695569907291-u88lctlgjt9ofqoc8lqv9vbbbjvg5st5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
