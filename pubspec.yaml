@@ -13,6 +13,13 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  cloud_firestore:
+  firebase_auth:
+  firebase_core:
+  brasil_fields:
+  curved_navigation_bar:
+
+
 
 
 dev_dependencies:
@@ -22,6 +29,13 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/fonts/App.ttf
 
   uses-material-design: true
 
+
+  assets:
+    - assets/imagens/black/23.jpg
