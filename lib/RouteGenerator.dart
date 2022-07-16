@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_workout/views/cadastro/cadastro-view.dart';
+import 'package:my_workout/views/configuracao/configuracao-view.dart';
 import 'package:my_workout/views/home/home-view.dart';
 import 'package:my_workout/views/login/login-view.dart';
 
@@ -8,10 +9,6 @@ class RouteGenerator {
     final args = settings.arguments;
 
     switch (settings.name) {
-      // case "/" :
-      //   return MaterialPageRoute(
-      //     builder: (_) => Anuncios()
-      //   );
       case "/login":
         return MaterialPageRoute(
           builder: (_) => LoginView(),
@@ -22,12 +19,13 @@ class RouteGenerator {
         );
       case "/cadastro":
         return MaterialPageRoute(
-          builder: (_) => CadastroView(),
+          builder: (_) => const CadastroView(),
         );
-      // case "/detalhes-anuncio" :
-      //   return MaterialPageRoute(
-      //       builder: (_) => DetalhesAnuncio(args)
-      //   );
+      case "/configuracoes":
+        return MaterialPageRoute(
+          builder: (_) => const ConfiguracaoView(),
+        );
+
       default:
         _erroRota();
     }

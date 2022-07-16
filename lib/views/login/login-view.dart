@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_workout/models/usuario.dart';
 import 'package:my_workout/shared/constants/colors.dart';
 import 'package:my_workout/util/size-config/size-config.dart';
+import 'package:my_workout/views/home/home-view.dart';
 import 'package:my_workout/views/login/widgets/background-image-widget.dart';
 import 'package:my_workout/views/login/widgets/form-login-widget.dart';
 import 'package:my_workout/views/login/widgets/title-subtitle-widget.dart';
@@ -13,12 +14,34 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final TextEditingController controllerEmail = TextEditingController();
-  final TextEditingController controllerSenha = TextEditingController();
+  final TextEditingController controllerEmail =
+      TextEditingController(text: 'teste4@gmail.com');
+  final TextEditingController controllerSenha =
+      TextEditingController(text: '1234567');
 
   bool _cadastrar = false;
   String _mensagemErro = "";
   String _textoBotao = "Entrar";
+
+  Future _verificarUsuarioLogado() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? usuarioLogado = auth.currentUser;
+
+    if (usuarioLogado == null) {
+      null;
+    } else {
+      //Navigator.pushReplacementNamed(context, '/home');
+
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const HomeView()));
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+// _verificarUsuarioLogado();
+  }
 
   _cadastrarUsuario(Usuario usuario) {
     FirebaseAuth auth = FirebaseAuth.instance;
@@ -28,7 +51,7 @@ class _LoginViewState extends State<LoginView> {
             email: usuario.email, password: usuario.senha)
         .then((firebaseUser) {
       //redireciona para tela principal
-      Navigator.pushReplacementNamed(context, "/");
+      Navigator.pushReplacementNamed(context, '/home');
     });
   }
 
@@ -40,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
             email: usuario.email, password: usuario.senha)
         .then((firebaseUser) {
       //redireciona para tela principal
-      Navigator.pushReplacementNamed(context, "/");
+      Navigator.pushReplacementNamed(context, '/home');
     });
   }
 
@@ -60,11 +83,9 @@ class _LoginViewState extends State<LoginView> {
         if (_cadastrar) {
           //Cadastrar
           _cadastrarUsuario(usuario);
-          Navigator.pushReplacementNamed(context, '/home');
         } else {
           //Logar
           _logarUsuario(usuario);
-          Navigator.pushReplacementNamed(context, '/home');
         }
       } else {
         setState(
@@ -99,7 +120,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor:AppColors.kThirdColor,
+      backgroundColor: AppColors.kThirdColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,7 +180,7 @@ class _LoginViewState extends State<LoginView> {
                             child: Center(
                               child: Text(
                                 _textoBotao,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
                             ),

@@ -2,6 +2,8 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:my_workout/shared/constants/colors.dart';
 import 'package:my_workout/shared/constants/icons.dart';
+import 'package:my_workout/views/cadastro/cadastro-view.dart';
+import 'package:my_workout/views/configuracao/configuracao-view.dart';
 import 'package:my_workout/views/home/widgets/listagem-exercicios-widget.dart';
 
 class HomeView extends StatefulWidget {
@@ -14,6 +16,29 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int _page = 0;
   final GlobalKey _bottomNavigationKey = GlobalKey();
+late   BuildContext _context;
+
+  _getPage(int page) {
+    switch (page) {
+      case 0:
+        return const ListagemExerciciosWidget();
+      case 1:
+        return Container(color: Colors.blueAccent,);
+      case 2:
+        return Container(color: Colors.redAccent,);
+      case 3:
+        return
+          ConfiguracaoView();
+
+       // Future.delayed(new Duration(milliseconds: 1500), ()
+       //    {
+       //     // Navigator.of(context).pushNamed("/configuracoes");
+       //      Navigator.push(context, MaterialPageRoute(builder: (_) => ConfiguracaoView()));
+       //
+       //    });
+
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +80,21 @@ class _HomeViewState extends State<HomeView> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xff03dac6),
         foregroundColor: Colors.white,
-        onPressed: () {
-          Navigator.pushNamed(context, '/cadastro');
-        },
+        onPressed: () =>
+            // WidgetsBinding.instance.addPostFrameCallback((_) {
+            //   Navigator.push(context, MaterialPageRoute(builder: (_) => CadastroView()));
+            // }),
+//           Future.delayed(const Duration(milliseconds: 500), () {
+// // Aqui você pode escrever seu código
+//
+//             setState(() {
+//               Navigator.of(context).pushAndRemoveUntil(
+//                   MaterialPageRoute(builder: (context) =>  CadastroView()),
+//                       (route) => false);
+//             });
+//           }),
+        Navigator.pushNamed(context, '/cadastro'),
+
         child: const Icon(Icons.add),
       ),
     );
@@ -65,15 +102,3 @@ class _HomeViewState extends State<HomeView> {
 }
 
 
-_getPage(int page) {
-  switch (page) {
-    case 0:
-      return const ListagemExerciciosWidget();
-    case 1:
-      return Container(color: Colors.blueAccent,);
-    case 2:
-      return Container(color: Colors.redAccent,);
-    case 3:
-      return Container(color: Colors.orangeAccent,);
-  }
-}
